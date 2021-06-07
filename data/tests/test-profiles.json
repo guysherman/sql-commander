@@ -1,0 +1,20 @@
+{
+  "profiles": [
+    {
+      "name": "test1",
+      "host": "test1.mydbhost.com",
+      "port": 54321,
+      "username": "test1user",
+      "database": "test1db",
+      "password": "test1pass"
+    },
+    {
+      "name": "test2",
+      "host": "test2.mydbhost.com",
+      "port": 54321,
+      "username": "test2user",
+      "database": "test2db",
+      "password": "test2pass"
+    }
+  ]
+}
