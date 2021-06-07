@@ -1,23 +1,21 @@
-import blessed from 'blessed';
-import { ProfileList } from './profileList';
+import blessed from 'blessed'
+import { ProfileListView } from './profileList'
 
-export function MainScreen(exitEvent: (ch: any, key: blessed.Widgets.Events.IKeyEventArg) => void ): blessed.Widgets.Screen {
+export function MainScreen (exitEvent: (ch: any, key: blessed.Widgets.Events.IKeyEventArg) => void): blessed.Widgets.Screen {
   const screen = blessed.screen({
     smartCSR: true,
-    style : {
+    style: {
       fg: 'fg',
-      bg: 'bg',
+      bg: 'bg'
     },
-    title: 'SQL Commander',
-  });
+    title: 'SQL Commander'
+  })
 
-  screen.key(['q', 'C-c'], exitEvent);
-  const profileList = ProfileList();
+  screen.key(['q', 'C-c'], exitEvent)
+  const profileList = ProfileListView()
 
-  screen.append(profileList);
-  profileList.focus();
+  screen.append(profileList)
+  profileList.focus()
 
-
-
-  return screen;
+  return screen
 }

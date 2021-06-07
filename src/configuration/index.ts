@@ -1,1 +1,1 @@
-export { loadProfiles, getProfile, listProfiles, ProfileList } from './profile';
+export { loadProfiles, getProfile, listProfiles, ProfileList } from './profile'
