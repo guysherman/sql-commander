@@ -1,0 +1,35 @@
+version: '3.8' # optional since v1.27.0
+services:
+  test-runner:
+    build:
+      context: ./
+      dockerfile: Dockerfile.testrunner
+      network: host
+    container_name: test-runner
+    environment:
+      DB_HOST: db
+      DB_USERNAME: sqlcmdr
+      DB_PASSWORD: password
+      DB_NAME: sqlcmdr
+    links:
+      - db
+    depends_on:
+      - db
+
+  db:
+    container_name: pg-sqlcmdr
+    image: postgres:12.5-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: sqlcmdr
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: sqlcmdr
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U sqlcmdr']
+      interval: 30s
+      timeout: 10s
+      retries: 20
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./scripts/postgres:/docker-entrypoint-initdb.d

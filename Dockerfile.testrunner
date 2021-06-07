@@ -1,0 +1,11 @@
+FROM node:lts-alpine AS deps
+
+# Install Native Dependencies
+RUN apk --no-cache add python make g++ postgresql-client
+
+WORKDIR /opt/app
+
+COPY ./  ./
+
+RUN yarn
+
