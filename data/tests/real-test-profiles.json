@@ -1,0 +1,13 @@
+{
+  "profiles": [
+    {
+      "name": "real",
+      "host": "db",
+      "port": 5432,
+      "user": "sqlcmdr",
+      "database": "sqlcmdr",
+      "password": "password"
+    }
+  ]
+}
+
