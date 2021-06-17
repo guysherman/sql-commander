@@ -6,7 +6,7 @@ test('when no name is passed, return default profile', async () => {
     name,
     host,
     port,
-    username,
+    user,
     database,
     password
   } = profile
@@ -14,7 +14,7 @@ test('when no name is passed, return default profile', async () => {
   expect(name).toBe('')
   expect(host).toBe('')
   expect(port).toBe(5432)
-  expect(username).toBe('')
+  expect(user).toBe('')
   expect(database).toBe('')
   expect(password).toBe('')
 })
@@ -26,7 +26,7 @@ test('when \'test1\' is passed, the correct profile is returned', async () => {
     name,
     host,
     port,
-    username,
+    user,
     database,
     password
   } = profile
@@ -34,7 +34,7 @@ test('when \'test1\' is passed, the correct profile is returned', async () => {
   expect(name).toBe('test1')
   expect(host).toBe('test1.mydbhost.com')
   expect(port).toBe(54321)
-  expect(username).toBe('test1user')
+  expect(user).toBe('test1user')
   expect(database).toBe('test1db')
   expect(password).toBe('test1pass')
 })

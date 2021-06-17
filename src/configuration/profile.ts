@@ -5,7 +5,7 @@ export type Profile = {
   name: string;
   host: string;
   port: number;
-  username: string;
+  user: string;
   database: string;
   password: string;
 }
@@ -14,7 +14,7 @@ const defaultProfile = {
   name: '',
   host: '',
   port: 5432,
-  username: '',
+  user: '',
   database: '',
   password: ''
 }
