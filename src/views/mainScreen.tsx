@@ -28,7 +28,9 @@ export function MainScreen () {
 
   return (
     <Screen>
-      <Box {...boxOpts}/>
+      <Box {...boxOpts}>
+        {'Hello {bold}world{/bold}!'}
+      </Box>
     </Screen>
   )
 }
