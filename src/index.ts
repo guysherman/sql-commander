@@ -1,8 +1,10 @@
-import { Widgets } from 'blessed'
+// import { Widgets } from 'blessed'
 import { loadProfiles } from './configuration'
 import { MainScreen } from './views/mainScreen'
+import { render } from './treecat/index'
 
 loadProfiles().then(() => {
-  const mainScreen: Widgets.Screen = MainScreen(() => process.exit(0))
-  mainScreen.render()
+  render(MainScreen())
+  // const mainScreen: Widgets.Screen = MainScreen(() => process.exit(0))
+  // mainScreen.render()
 })
