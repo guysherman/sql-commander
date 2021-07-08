@@ -1,18 +1,34 @@
 /** @jsx createElement **/
-import * as blessed from 'blessed'
 // eslint-disable-next-line no-unused-vars
 import { createElement } from '../treecat/index'
-import { Screen } from '../treecat/baseComponents/screen'
+import { Screen, Box } from '../treecat/baseComponents'
 
 export function MainScreen () {
-  const onKeyPress = (_ch: string, key: blessed.Widgets.Events.IKeyEventArg): void => {
-    console.log(JSON.stringify(key, null, '  '))
-    if (key.full === 'C-c') {
-      process.exit(0)
+  const boxOpts = {
+    top: 'center',
+    left: 'center',
+    width: '50%',
+    height: '50%',
+    content: 'Hello {bold}world{/bold}!',
+    tags: true,
+    border: {
+      type: 'line' as const
+    },
+    style: {
+      fg: 'white',
+      bg: 'magenta',
+      border: {
+        fg: '#f0f0f0'
+      },
+      hover: {
+        bg: 'green'
+      }
     }
   }
 
   return (
-    <Screen onKeyPress={onKeyPress} />
+    <Screen>
+      <Box {...boxOpts}/>
+    </Screen>
   )
 }
