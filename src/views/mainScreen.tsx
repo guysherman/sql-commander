@@ -27,10 +27,10 @@ export function MainScreen () {
   }
 
   return (
-    <Screen>
+    <Box>
       <Box {...boxOpts}>
         {'Hello {bold}world{/bold}!'}
       </Box>
-    </Screen>
+    </Box>
   )
 }
