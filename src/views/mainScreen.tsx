@@ -8,7 +8,6 @@ export function MainScreen () {
     left: 'center',
     width: '50%',
     height: '50%',
-    content: 'Hello {bold}world{/bold}!',
     tags: true,
     border: {
       type: 'line' as const
