@@ -1,7 +1,6 @@
-/** @jsx createElement **/
+/** @jsx TreeCat.createElement **/
 // eslint-disable-next-line no-unused-vars
-import { createElement } from '../treecat/index'
-import { Screen, Box } from '../treecat/baseComponents'
+import * as TreeCat from '../treecat/index'
 
 export function MainScreen () {
   const boxOpts = {
@@ -27,10 +26,10 @@ export function MainScreen () {
   }
 
   return (
-    <Box>
-      <Box {...boxOpts}>
+    <box>
+      <box {...boxOpts}>
         {'Hello {bold}world{/bold}!'}
-      </Box>
-    </Box>
+      </box>
+    </box>
   )
 }
