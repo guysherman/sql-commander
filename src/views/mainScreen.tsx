@@ -1,8 +1,18 @@
 /** @jsx TreeCat.createElement **/
 // eslint-disable-next-line no-unused-vars
 import * as TreeCat from '../treecat/index'
+import { useState } from '../treecat/index'
 
 export function MainScreen () {
+  const [state, setState] = useState(1)
+
+  const kp = (ch: string, _key: any) => {
+    if (ch === '+') {
+      setState(s => s + 1)
+    } else if (ch === '-') {
+      setState(s => s - 1)
+    }
+  }
   const boxOpts = {
     top: 'center',
     left: 'center',
@@ -26,8 +36,8 @@ export function MainScreen () {
 
   return (
     <box>
-      <box {...boxOpts}>
-        {'Hello {bold}world{/bold}!'}
+      <box {...boxOpts} onkeypress={kp}>
+        {`Hello {bold}world{/bold}! ${state}`}
       </box>
     </box>
   )
