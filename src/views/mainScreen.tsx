@@ -4,41 +4,50 @@ import * as TreeCat from '../treecat/index'
 import { useState } from '../treecat/index'
 
 export function MainScreen () {
-  const [state, setState] = useState(1)
+  const [selectedItem, setSelectedItem] = useState('')
 
-  const kp = (ch: string, _key: any) => {
-    if (ch === '+') {
-      setState(s => s + 1)
-    } else if (ch === '-') {
-      setState(s => s - 1)
-    }
+  const handleSelectItem = (item: any, index: number) => {
+    console.log(`item: ${item.content}, index: ${index}`)
+    setSelectedItem(() => item.content)
   }
+
   const boxOpts = {
     top: 'center',
     left: 'center',
     width: '50%',
-    height: '50%',
+    height: '20%',
     tags: true,
     border: {
       type: 'line' as const
     },
     style: {
-      fg: 'white',
-      bg: 'magenta',
       border: {
         fg: '#f0f0f0'
       },
-      hover: {
-        bg: 'green'
+      selected: {
+        fg: 'white',
+        bg: 'blue'
+      },
+      item: {
+        fg: 'white',
+        bg: 'black'
       }
-    }
+    },
+    keys: true,
+    vi: true,
+    items: [
+      '1. Item 1',
+      '2. Item 2'
+    ],
+    label: 'List',
+    'onselect item': handleSelectItem
   }
+
 
   return (
     <box>
-      <box {...boxOpts} onkeypress={kp}>
-        {`Hello {bold}world{/bold}! ${state}`}
-      </box>
+      <box bottom={1} width="50%" height={3} border={'line' as const} focused={false} >{selectedItem}</box>
+      <list {...boxOpts} focused={true} />
     </box>
   )
 }
