@@ -7,7 +7,6 @@ export function MainScreen () {
   const [selectedItem, setSelectedItem] = useState('')
 
   const handleSelectItem = (item: any, index: number) => {
-    console.log(`item: ${item.content}, index: ${index}`)
     setSelectedItem(() => item.content)
   }
 
@@ -46,8 +45,8 @@ export function MainScreen () {
 
   return (
     <box>
-      <box bottom={1} width="50%" height={3} border={'line' as const} focused={false} >{selectedItem}</box>
       <list {...boxOpts} focused={true} />
+      <box bottom={1} width="50%" height={3} border={'line' as const} >{selectedItem}</box>
     </box>
   )
 }
