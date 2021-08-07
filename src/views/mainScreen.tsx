@@ -42,7 +42,6 @@ export function MainScreen () {
     'onselect item': handleSelectItem
   }
 
-
   return (
     <box>
       <list {...boxOpts} focused={true} />
