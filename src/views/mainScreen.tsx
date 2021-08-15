@@ -10,9 +10,9 @@ export function MainScreen () {
 
   const cycleFocus = (_ch: string, key: blessed.Widgets.Events.IKeyEventArg) => {
     if (key.full === 'M-S-l') {
-      setFocusedPane(() => (focusedPane + 1) % 2)
+      setFocusedPane((focusedPane + 1) % 2)
     } else if (key.full === 'M-S-h') {
-      setFocusedPane(() => Math.abs((focusedPane - 1) % 2))
+      setFocusedPane(Math.abs((focusedPane - 1) % 2))
     }
   }
 
