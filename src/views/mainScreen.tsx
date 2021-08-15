@@ -1,51 +1,58 @@
 /** @jsx TreeCat.createElement **/
+import * as blessed from 'blessed'
 // eslint-disable-next-line no-unused-vars
 import * as TreeCat from '../treecat/index'
-import { useState } from '../treecat/index'
+import { useState, useRoot, useEffect } from '../treecat/index'
 
 export function MainScreen () {
-  const [selectedItem, setSelectedItem] = useState('')
+  const [focusedPane, setFocusedPane] = useState(0)
+  const root = useRoot()
 
-  const handleSelectItem = (item: any, index: number) => {
-    setSelectedItem(() => item.content)
+  const cycleFocus = (_ch: string, key: blessed.Widgets.Events.IKeyEventArg) => {
+    if (key.full === 'M-S-l') {
+      setFocusedPane(() => (focusedPane + 1) % 2)
+    } else if (key.full === 'M-S-h') {
+      setFocusedPane(() => Math.abs((focusedPane - 1) % 2))
+    }
   }
 
-  const boxOpts = {
-    top: 'center',
-    left: 'center',
-    width: '50%',
-    height: '20%',
-    tags: true,
-    border: {
-      type: 'line' as const
-    },
-    style: {
-      border: {
-        fg: '#f0f0f0'
-      },
-      selected: {
-        fg: 'white',
-        bg: 'blue'
-      },
-      item: {
-        fg: 'white',
-        bg: 'black'
-      }
-    },
-    keys: true,
-    vi: true,
-    items: [
-      '1. Item 1',
-      '2. Item 2'
-    ],
-    label: 'List',
-    'onselect item': handleSelectItem
+  useEffect(() => {
+    root?.program?.on('keypress', cycleFocus)
+
+    return () => {
+      root?.program?.off('keypress', cycleFocus)
+    }
+  })
+
+  const selectedItemStyle = {
+    fg: 'white',
+    bg: 'blue'
+  }
+
+  const normalItemStyle = {
+    fg: 'white',
+    bg: 'black'
   }
 
   return (
     <box>
-      <list {...boxOpts} focused={true} />
-      <box bottom={1} width="50%" height={3} border={'line' as const} >{selectedItem}</box>
+      <box
+        left={0}
+        top={0}
+        width={'30%'}
+        height={'100%'}
+        border={{ type: 'line' as const }}
+        style={{ border: { fg: 'white' }, focus: { border: { fg: 'blue' } } }} focused={ focusedPane === 0 } >
+        <text style={selectedItemStyle} fill={true} top={0} width={'100%-2'} >Foo!</text>
+        <text style={normalItemStyle} fill={true} top={1} left={4} width={'100%-6'} >Bar!</text>
+      </box>
+      <box
+        left={'30%'}
+        top={0}
+        width={'70%'}
+        height={'100%'}
+        border={{ type: 'line' as const }}
+        style={{ border: { fg: 'white' }, focus: { border: { fg: 'blue' } } }} focused={ focusedPane === 1 } />
     </box>
   )
 }
