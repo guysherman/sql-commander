@@ -2,7 +2,7 @@
 import * as blessed from 'blessed'
 // eslint-disable-next-line no-unused-vars
 import * as TreeCat from '../treecat/index'
-import { useState, useRoot, useEffect } from '../treecat/index'
+import { useState, useRoot, useEffect, Fragment } from '../treecat/index'
 
 export function MainScreen () {
   const [focusedPane, setFocusedPane] = useState(0)
@@ -35,24 +35,26 @@ export function MainScreen () {
   }
 
   return (
-    <box>
-      <box
-        left={0}
-        top={0}
-        width={'30%'}
-        height={'100%'}
-        border={{ type: 'line' as const }}
-        style={{ border: { fg: 'white' }, focus: { border: { fg: 'blue' } } }} focused={ focusedPane === 0 } >
-        <text style={selectedItemStyle} fill={true} top={0} width={'100%-2'} >Foo!</text>
-        <text style={normalItemStyle} fill={true} top={1} left={4} width={'100%-6'} >Bar!</text>
+    <Fragment>
+      <box>
+        <box
+          left={0}
+          top={0}
+          width={'30%'}
+          height={'100%'}
+          border={{ type: 'line' as const }}
+          style={{ border: { fg: 'white' }, focus: { border: { fg: 'blue' } } }} focused={ focusedPane === 0 } >
+          <text style={selectedItemStyle} fill={true} top={0} width={'100%-2'} >Foo!</text>
+          <text style={normalItemStyle} fill={true} top={1} left={4} width={'100%-6'} >Bar!</text>
+        </box>
+        <box
+          left={'30%'}
+          top={0}
+          width={'70%'}
+          height={'100%'}
+          border={{ type: 'line' as const }}
+          style={{ border: { fg: 'white' }, focus: { border: { fg: 'blue' } } }} focused={ focusedPane === 1 } />
       </box>
-      <box
-        left={'30%'}
-        top={0}
-        width={'70%'}
-        height={'100%'}
-        border={{ type: 'line' as const }}
-        style={{ border: { fg: 'white' }, focus: { border: { fg: 'blue' } } }} focused={ focusedPane === 1 } />
-    </box>
+    </Fragment>
   )
 }
