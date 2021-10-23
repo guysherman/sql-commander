@@ -5813,6 +5813,7 @@ fsevents@^2.3.2:
     pg: ^8.6.0
     pinst: ^2.0.0
     rimraf: ^3.0.2
+    treecat: ../treecat
     ts-jest: ^27.0.2
     ts-node: ^10.0.0
     tslib: ^2.2.0
@@ -6161,6 +6162,17 @@ fsevents@^2.3.2:
   dependencies:
     punycode: ^2.1.1
   checksum: d6da91f2463fa8d30c938331d02bebf01bd96af68016bc233ad37c9e4bc7e607a46065f5eab2034076aab5fdac362c02421b34c29c57095d0d310d3833e2736f
+  languageName: node
+  linkType: hard
+
+"treecat@file:../treecat::locator=sql-commander%40workspace%3A.":
+  version: 0.0.1
+  resolution: "treecat@file:../treecat#../treecat::hash=21d72f&locator=sql-commander%40workspace%3A."
+  dependencies:
+    "@types/blessed": ^0.1.17
+    "@yarnpkg/pnpify": ^3.0.0-rc.6
+    blessed: ^0.1.81
+  checksum: 7eec2f4ac4afc939597232ee29e99635ee256f2763296e442a20b1b36796ac3a2c4cbbfb6566986c5809dcc64c017c3628674d598717fe484b6344a091426548
   languageName: node
   linkType: hard
 

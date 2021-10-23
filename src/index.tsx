@@ -2,7 +2,7 @@
 import * as blessed from 'blessed'
 import { loadProfiles } from './configuration'
 import { MainScreen } from './views/mainScreen'
-import * as TreeCat from './treecat/index'
+import * as TreeCat from 'treecat'
 
 loadProfiles().then(() => {
   const rootScreen: blessed.Widgets.Screen = blessed.screen({ sendFocus: true })

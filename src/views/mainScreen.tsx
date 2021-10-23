@@ -1,8 +1,8 @@
 /** @jsx TreeCat.createElement **/
 import * as blessed from 'blessed'
 // eslint-disable-next-line no-unused-vars
-import * as TreeCat from '../treecat/index'
-import { useState, useRoot, useEffect, Fragment } from '../treecat/index'
+import * as TreeCat from 'treecat'
+import { useState, useRoot, useEffect, Fragment } from 'treecat'
 
 export function MainScreen () {
   const [focusedPane, setFocusedPane] = useState(0)

@@ -43,6 +43,7 @@
     "blessed": "^0.1.81",
     "minimist": "^1.2.5",
     "minimist-options": "^4.1.0",
-    "pg": "^8.6.0"
+    "pg": "^8.6.0",
+    "treecat": "../treecat"
   }
 }
